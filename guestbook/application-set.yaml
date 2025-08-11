@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook-application-set
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - cluster: minikube-dev
+            url: https://kubernetes.default.svc
+          # Add more entries if needed
+  template:
+    metadata:
+      name: '{{cluster}}-guestbook'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/argoproj/argocd-example-apps.git
+        targetRevision: HEAD
+        path: guestbook
+      destination:
+        server: '{{url}}'
+        namespace: default
