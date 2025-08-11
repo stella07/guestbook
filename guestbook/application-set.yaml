@@ -16,8 +16,8 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/argoproj/argocd-example-apps.git
-        targetRevision: HEAD
+        repoURL: https://github.com/stella07/guestbook.git
+        targetRevision: main
         path: guestbook
       destination:
         server: '{{url}}'
