@@ -12,12 +12,10 @@ spec:
       name: guestbook-{{ .Values.cloud }}-{{ .Values.env }}
     spec:
       project: default
-      source:
+      source: 
         repoURL: {{ .Values.repoURL }}
         targetRevision: {{ .Values.targetRevision }}
-        path: deployments/{{ .Values.cloud }}/{{ .Values.env }}/**/config.yaml
-        directory:
-          recurse: true
+        path: resources
       destination:
         server: {{ .Values.cluster }}
         namespace: {{ .Values.namespace }}
