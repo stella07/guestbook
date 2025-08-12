@@ -1,8 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: apiconnect-application-set
-  namespace: default
+    name: guestbook-{{ required "cloud is required" .Values.cloud }}-{{ required "env is required" .Values.env }}
 spec:
   generators:
     - list:
