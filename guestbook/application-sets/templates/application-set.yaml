@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-    name: guestbook-{{ required "cloud is required" .Values.cloud }}-{{ required "env is required" .Values.env }}
+    name: guestbook-{{ .Values.cloud }}-{{  .Values.env }}
 spec:
   generators:
     - list:
