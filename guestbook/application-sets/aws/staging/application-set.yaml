@@ -1,0 +1,5 @@
+env: staging
+namespace: staging
+cluster: https://staging.k8s.local
+repoURL: https://github.com/your-org/your-repo.git
+targetRevision: release

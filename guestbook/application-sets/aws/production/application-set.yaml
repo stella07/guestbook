@@ -1,0 +1,5 @@
+env: prod
+namespace: prod
+cluster: https://prod.k8s.local
+repoURL: https://github.com/your-org/your-repo.git
+targetRevision: main

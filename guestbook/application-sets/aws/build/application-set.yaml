@@ -1,0 +1,5 @@
+env: dev
+namespace: dev
+cluster: https://kubernetes.default.svc
+repoURL: https://github.com/your-org/your-repo.git
+targetRevision: HEAD
