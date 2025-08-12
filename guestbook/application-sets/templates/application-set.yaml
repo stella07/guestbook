@@ -1,29 +1,31 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: apiconnect-application-set
+  name: myapp-{{ .Values.env }}
 spec:
   generators:
     - list:
         elements:
-          - name: guestbook-{{ .Values.cloud }}-{{ .Values.env }}
+{{- range .Values.clusters }}
+          - name: {{ .name | quote }}
+            server: {{ .server | quote }}
+            namespace: {{ .namespace | quote }}
+{{- end }}
   template:
     metadata:
-      labels:
-       cloud: {{ .Values.cloud }}
-       environment: {{ .Values.env }}
-      name: guestbook-{{ .Values.cloud }}-{{ .Values.env }}-resources
+      name: {{ printf "\"%s\"" (printf "{{name}}-%s" .Values.env) }}
     spec:
       project: default
       source:
-        repoURL: {{ .Values.repoURL }}
-        targetRevision: {{ .Values.targetRevision }}
-        path: guestbook/deployments/{{ .Values.cloud }}/{{ .Values.env }}/apic-d-u01
-        directory:
-          recurse: true
+        repoURL: {{ .Values.repoURL | quote }}
+        targetRevision: {{ .Values.targetRevision | quote }}
+        chart: resources/my-app
+        helm:
+          valueFiles:
+            - deployments/{{ .Values.env }}/{{ printf "{{name}}" }}/values.yaml
       destination:
-        server: {{ .Values.cluster }}
-        namespace: {{ .Values.namespace }}
+        server: {{ printf "{{server}}" }}
+        namespace: {{ printf "{{namespace}}" }}
       syncPolicy:
         automated:
           prune: true

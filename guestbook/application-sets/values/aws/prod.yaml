@@ -1,0 +1,10 @@
+env: prod
+repoURL: https://github.com/local/demo-repo.git
+targetRevision: HEAD
+clusters:
+  - name: us-east-1
+    server: https://kubernetes.default.svc
+    namespace: prod
+  - name: eu-west-1
+    server: https://kubernetes.default.svc
+    namespace: prod

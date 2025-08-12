@@ -1,4 +1,4 @@
 apiVersion: v2
 name: application-sets
-description: Helm chart for ArgoCD ApplicationSets
+description: Helm chart for ApplicationSet demo
 version: 0.1.0

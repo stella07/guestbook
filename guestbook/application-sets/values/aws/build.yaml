@@ -1,6 +1,7 @@
-cloud: aws
 env: build
-namespace: build
-cluster: https://kubernetes.default.svc
 repoURL: https://github.com/stella07/guestbook.git
-targetRevision: main
+targetRevision: HEAD
+clusters:
+  - name: dev-cluster
+    server: https://kubernetes.default.svc
+    namespace: build
