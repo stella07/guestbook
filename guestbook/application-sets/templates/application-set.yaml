@@ -13,7 +13,7 @@ spec:
 {{- end }}
   template:
     metadata:
-      name: {{ printf "\"%s\"" (printf "{{name}}-%s" .Values.env) }}
+      name: "{{`{{name}}`}}-{{ .Values.env }}"
     spec:
       project: default
       source:
@@ -22,10 +22,10 @@ spec:
         chart: resources/my-app
         helm:
           valueFiles:
-            - deployments/{{ .Values.env }}/{{ printf "{{name}}" }}/values.yaml
+            - deployments/{{ .Values.env }}/{{`{{name}}`}}/values.yaml
       destination:
-        server: {{ printf "{{server}}" }}
-        namespace: {{ printf "{{namespace}}" }}
+        server: "{{`{{server}}`}}"
+        namespace: "{{`{{namespace}}`}}"
       syncPolicy:
         automated:
           prune: true

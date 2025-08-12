@@ -1,5 +1,5 @@
 env: prod
-repoURL: https://github.com/local/demo-repo.git
+repoURL: https://github.com/stella07/guestbook.git
 targetRevision: HEAD
 clusters:
   - name: us-east-1
