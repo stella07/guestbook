@@ -13,7 +13,7 @@ spec:
 {{- end }}
   template:
     metadata:
-      name: "{{`{{name}}`}}-{{ .Values.env }}"
+      name: "{{ .Values.env }}-{{ .Values.env }}"
     spec:
       project: default
       source:
@@ -22,11 +22,4 @@ spec:
         chart: resources/my-app
         helm:
           valueFiles:
-            - deployments/aws/{{ .Values.env }}/{{`{{name}}`}}/values.yaml
-      destination:
-        server: "{{`{{server}}`}}"
-        namespace: "{{`{{namespace}}`}}"
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
+            - deployments/aws/{{ .Values.env }}/{{ .Values.name }}/values.yaml
