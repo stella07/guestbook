@@ -18,7 +18,7 @@ spec:
       source:
         repoURL: {{ .Values.repoURL }}
         targetRevision: {{ .Values.targetRevision }}
-        path: deployments/{{ .Values.cloud }}/{{ .Values.env }}/apic-d-u01
+        path: deployments/{{ .Values.cloud }}/{{ .Values.env }}/apic-d-u01/
         directory:
           recurse: true
       destination:
