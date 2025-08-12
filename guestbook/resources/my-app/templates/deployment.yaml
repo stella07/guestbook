@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "my-app.fullname" . }}
+  name: guestbook-ui
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: {{ include "my-app.name" . }}
+      app: guestbook-ui
   template:
     metadata:
       labels:
-        app: {{ include "my-app.name" . }}
+        app: guestbook-ui
     spec:
       containers:
-        - name: my-app
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        - image: gcr.io/google-samples/gb-frontend:v5
+          name: guestbook-ui
           ports:
             - containerPort: 80
