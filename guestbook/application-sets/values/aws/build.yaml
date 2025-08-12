@@ -1,3 +1,4 @@
+cloud: aws
 env: build
 namespace: build
 cluster: https://kubernetes.default.svc

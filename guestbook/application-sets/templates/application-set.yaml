@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook-{{ .Values.cloud }}-{{ .Values.env }}
+spec:
+  generators:
+    - list:
+        elements:
+          - name: guestbook-{{ .Values.cloud }}-{{ .Values.env }}
+  template:
+    metadata:
+      name: guestbook-{{ .Values.cloud }}-{{ .Values.env }}
+    spec:
+      project: default
+      source:
+        repoURL: {{ .Values.repoURL }}
+        targetRevision: {{ .Values.targetRevision }}
+        path: deployments/{{ .Values.cloud }}/{{ .Values.env }}
+      destination:
+        server: {{ .Values.cluster }}
+        namespace: {{ .Values.namespace }}
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
