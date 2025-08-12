@@ -23,3 +23,10 @@ spec:
         helm:
           valueFiles:
             - deployments/aws/{{ .Values.env }}/{{ .Values.name }}/values.yaml
+      destination:
+        server: "{{ .Values.server }}"
+        namespace: "{{ .Values.namespace }}"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true

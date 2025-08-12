@@ -2,6 +2,8 @@ env: build
 repoURL: https://github.com/stella07/guestbook.git
 targetRevision: HEAD
 name: dev-cluster
+server: https://kubernetes.default.svc
+namespace: default
 clusters:
   - name: dev-cluster
     server: https://kubernetes.default.svc
