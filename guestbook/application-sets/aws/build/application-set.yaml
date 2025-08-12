@@ -1,5 +1,5 @@
 env: dev
 namespace: dev
 cluster: https://kubernetes.default.svc
-repoURL: https://github.com/your-org/your-repo.git
+repoURL: https://github.com/stella07/guestbook.git
 targetRevision: HEAD
