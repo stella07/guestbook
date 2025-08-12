@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: guestbook-{{ .Values.cloud }}-{{ .Values.env }}
+  name: apiconnect-application-set
 spec:
   generators:
     - list:
@@ -15,7 +15,7 @@ spec:
       source:
         repoURL: {{ .Values.repoURL }}
         targetRevision: {{ .Values.targetRevision }}
-        path: deployments/{{ .Values.cloud }}/{{ .Values.env }}
+        path: deployments/{{ .Values.cloud }}/{{ .Values.env }}/**/config.yaml
       destination:
         server: {{ .Values.cluster }}
         namespace: {{ .Values.namespace }}
