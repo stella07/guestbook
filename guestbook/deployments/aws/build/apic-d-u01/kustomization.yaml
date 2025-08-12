@@ -1,4 +1,4 @@
 resources:
   - config.yaml
-  - ../../../../resources/guestbook-ui-deployment.yaml
-  - ../../../../resources/guestbook-ui-svc.yaml
+  - guestbook-ui-deployment.yaml
+  - guestbook-ui-svc.yaml
