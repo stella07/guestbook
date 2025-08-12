@@ -22,7 +22,7 @@ spec:
         chart: resources/my-app
         helm:
           valueFiles:
-            - deployments/{{ .Values.env }}/{{`{{name}}`}}/values.yaml
+            - deployments/aws/{{ .Values.env }}/{{`{{name}}`}}/values.yaml
       destination:
         server: "{{`{{server}}`}}"
         namespace: "{{`{{namespace}}`}}"
