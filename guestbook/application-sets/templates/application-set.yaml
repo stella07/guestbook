@@ -9,7 +9,10 @@ spec:
           - name: guestbook-{{ .Values.cloud }}-{{ .Values.env }}
   template:
     metadata:
-      name: guestbook-{{ .Values.cloud }}-{{ .Values.env }}
+      labels:
+       cloud: {{ .Values.cloud }}
+       environment: {{ .Values.env }}
+      name: guestbook-{{ .Values.cloud }}-{{ .Values.env }}-resources
     spec:
       project: default
       source:
