@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-    name: guestbook-{{ .Values.cloud }}-{{  .Values.env }}
+  name: apiconnect-application-set
 spec:
   generators:
     - list:
