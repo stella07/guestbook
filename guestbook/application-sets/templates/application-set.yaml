@@ -13,8 +13,8 @@ spec:
     spec:
       project: default
       source:
-        repoURL: {{ .required "repoURL is required" .Values.repoURL }}
-        targetRevision: {{  required "targetRevision is required" .Values.targetRevision }}
+        repoURL: {{ .Values.repoURL }}
+        targetRevision: {{ .Values.targetRevision }}
         path: deployments/{{ .Values.cloud }}/{{ .Values.env }}/**/config.yaml
       destination:
         server: {{ .Values.cluster }}
