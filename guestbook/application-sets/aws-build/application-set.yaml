@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: apiconnect-application-set
+spec:
+  generators:
+    -git:
+      files: 
+       - path: deployments/aws-build/**/config.yaml
+      repoURL: https://github.com/stella07/guestbook.git
+      revision: HEAD
+  template:
+    metadata:
+      labels:
+        cloud: "{{ cluster.cloud}}"
+        environment: "{{ cluster.environment}}"
+        region: "{{ cluster.region}}"
+      name: "{{ cluster.name }}-resources"
+    spec:
+      project: apiconnect
+      source:
+        path: resources
+        repoURL: https://github.com/stella07/guestbook.git
+        targetRevision: "{{ revision }}"
+      destination:
+        server: "{{ cluster.name }}"
+        namespace: default
