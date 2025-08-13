@@ -17,7 +17,7 @@ spec:
         region: "{{ cluster.region}}"
       name: "{{ cluster.name }}-resources"
     spec:
-      project: apiconnect
+      project: default
       source:
         path: resources
         repoURL: https://github.com/stella07/guestbook.git
