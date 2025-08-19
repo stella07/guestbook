@@ -5,26 +5,23 @@ metadata:
 spec:
   generators:
     - git:
-      files: 
-       - path: deployments/aws-build/apic-d-u01.yaml
-      repoURL: https://github.com/stella07/guestbook.git
-      revision: main
+        repoURL: https://github.com/stella07/guestbook.git
+        revision: main
+        directories:
+          - path: guestbook/resources/*
   template:
     metadata:
+      name: '{{path.basename}}'
       labels:
         cloud: aws
         environment: development
         region: us-east-1
-      name: apic-d-u01-resources
     spec:
-      destination:
-        name:  apic-d-u01
-        namespace: default
       project: default
       source:
-        path: guestbook/resources
         repoURL: https://github.com/stella07/guestbook.git
         targetRevision: main
+        path: '{{path}}'
       destination:
-        server:  https://kubernetes.default.svc
+        server: https://kubernetes.default.svc
         namespace: default
