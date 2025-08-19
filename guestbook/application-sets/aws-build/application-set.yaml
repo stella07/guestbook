@@ -8,7 +8,7 @@ spec:
         repoURL: https://github.com/stella07/guestbook.git
         revision: main
         directories:
-          - path: guestbook/resources/*
+          - path: guestbook/resources
   template:
     metadata:
       name: hello
