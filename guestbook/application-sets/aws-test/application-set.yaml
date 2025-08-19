@@ -4,11 +4,11 @@ metadata:
   name: apiconnect-application-set
 spec:
   generators:
-    -git:
+    - git:
       files: 
-       - path: deployments/aws-build/**/config.yaml
+       - path: deployments/aws-test/**/config.yaml
       repoURL: https://github.com/stella07/guestbook.git
-      revision: HEAD
+      revision: main
   template:
     metadata:
       labels:
