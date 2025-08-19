@@ -12,8 +12,8 @@ spec:
   template:
     metadata:
       labels:
-        cloud: "{{ cluster.cloud}}"
-        environment: "{{ cluster.environment}}"
+        cloud: aws
+        environment: development
         region: "{{ cluster.region}}"
       name: "{{ cluster.name }}-resources"
     spec:
@@ -24,7 +24,7 @@ spec:
       source:
         path: resources
         repoURL: https://github.com/stella07/guestbook.git
-        targetRevision: "{{ revision }}"
+        targetRevision: main
       destination:
         server: "{{ cluster.server }}"
         namespace: default

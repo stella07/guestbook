@@ -12,19 +12,19 @@ spec:
   template:
     metadata:
       labels:
-        cloud: "{{ cluster.cloud}}"
-        environment: "{{ cluster.environment}}"
-        region: "{{ cluster.region}}"
-      name: "{{ cluster.name }}-resources"
+        cloud: aws
+        environment: development
+        region: us-east-1
+      name: apic-d-u01-resources
     spec:
       destination:
-        name: '{{cluster.name}}'
+        name:  apic-d-u01
         namespace: default
       project: default
       source:
         path: resources
         repoURL: https://github.com/stella07/guestbook.git
-        targetRevision: "{{ revision }}"
+        targetRevision: main
       destination:
-        server: "{{ cluster.server }}"
+        server:  https://kubernetes.default.svc
         namespace: default
