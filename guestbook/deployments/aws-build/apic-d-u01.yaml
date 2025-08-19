@@ -3,4 +3,4 @@ cluster:
   environment: development
   region: us-east-1
   name: apic-d-u01
-  server: https://kubernetes.default.svc
+  server: http://127.0.0.1:52303
