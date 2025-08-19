@@ -3,4 +3,4 @@ cluster:
   environment: test
   region: eu-central-1
   name: apic-t-u03
-  server: http://127.0.0.1:52317
+  server: https://kubernetes.default.svc
