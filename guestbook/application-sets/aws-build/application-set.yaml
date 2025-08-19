@@ -11,7 +11,7 @@ spec:
           - path: guestbook/resources/*
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: hello
       labels:
         cloud: aws
         environment: development
@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: https://github.com/stella07/guestbook.git
         targetRevision: main
-        path: '{{path}}'
+        path: guestbook/resources
       destination:
         server: https://kubernetes.default.svc
         namespace: default
