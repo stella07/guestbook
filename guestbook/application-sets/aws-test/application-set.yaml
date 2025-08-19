@@ -6,7 +6,7 @@ spec:
   generators:
     - git:
       files: 
-       - path: deployments/aws-test/**/config.yaml
+       - path: deployments/aws-test/apic-t-u03.yaml
       repoURL: https://github.com/stella07/guestbook.git
       revision: main
   template:
@@ -26,5 +26,5 @@ spec:
         repoURL: https://github.com/stella07/guestbook.git
         targetRevision: "{{ revision }}"
       destination:
-        server: "{{ cluster.name }}"
+        server: "{{ cluster.server }}"
         namespace: default

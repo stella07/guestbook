@@ -1,4 +1,0 @@
-cluster:
-  cloud: aws
-  environment: development
-  region: us-east-1

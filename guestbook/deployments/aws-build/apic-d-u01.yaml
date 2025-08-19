@@ -1,0 +1,6 @@
+cluster:
+  cloud: aws
+  environment: development
+  region: us-east-1
+  name: apic-d-u01
+  server: https://kubernetes.default.svc
