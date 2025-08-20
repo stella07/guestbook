@@ -1,0 +1,4 @@
+name: apic-t-u03
+namespace: default
+environment: test
+region: us-east-1
