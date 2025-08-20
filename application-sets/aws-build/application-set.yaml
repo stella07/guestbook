@@ -1,3 +1,4 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -5,13 +6,13 @@ metadata:
 spec:
   generators:
     - git:
+        files:
+          - path: deployments/aws-build/**/config.yaml
         repoURL: https://github.com/stella07/guestbook.git
         revision: main
-        directories:
-          - path: guestbook/resources
   template:
     metadata:
-      name: hello
+      name: apic-du02-resources
       labels:
         cloud: aws
         environment: development
