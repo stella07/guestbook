@@ -1,4 +1,3 @@
----
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -6,17 +5,18 @@ metadata:
 spec:
   generators:
     - git:
-        files:
-          - path: deployments/aws-build/**/config.yaml
         repoURL: https://github.com/stella07/guestbook.git
         revision: main
+        files:
+          - path: deployments/aws-build/**/config.yaml
   template:
     metadata:
-      name: apic-du02-resources
+      # Application name will come from the config file (e.g., "apic-d-u01")
+      name: '{{name}}'
       labels:
         cloud: aws
-        environment: development
-        region: us-east-1
+        environment: '{{environment}}'
+        region: '{{region}}'
     spec:
       project: default
       source:
@@ -25,4 +25,4 @@ spec:
         path: resources
       destination:
         server: https://kubernetes.default.svc
-        namespace: default
+        namespace: '{{namespace}}'
