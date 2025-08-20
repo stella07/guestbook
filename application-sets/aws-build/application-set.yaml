@@ -22,7 +22,7 @@ spec:
       source:
         repoURL: https://github.com/stella07/guestbook.git
         targetRevision: main
-        path: guestbook/resources
+        path: resources
       destination:
         server: https://kubernetes.default.svc
         namespace: default
