@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: apiconnect-application-set
+  namespace: argocd
 spec:
   generators:
     - git:
@@ -11,7 +12,6 @@ spec:
           - path: deployments/aws-build/**/config.yaml
   template:
     metadata:
-      # Application name will come from the config file (e.g., "apic-d-u01")
       name: '{{name}}'
       labels:
         cloud: aws
@@ -26,3 +26,5 @@ spec:
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{namespace}}'
+      syncPolicy:
+        automated: {}   # auto create/update resources
