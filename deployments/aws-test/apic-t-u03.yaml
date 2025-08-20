@@ -1,6 +1,0 @@
-cluster:
-  cloud: aws
-  environment: test
-  region: eu-central-1
-  name: apic-t-u03
-  server: https://kubernetes.default.svc
