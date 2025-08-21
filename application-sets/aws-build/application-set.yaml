@@ -20,9 +20,12 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/stella07/guestbook.git
-        targetRevision: main
-        path: resources
+        - repoURL: https://github.com/stella07/guestbook.git
+          targetRevision: main
+          path: resources
+        - repoURL: https://github.com/stella07/guestbook.git
+          targetRevision: main
+          path: configmap
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{namespace}}'
