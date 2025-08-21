@@ -19,14 +19,22 @@ spec:
         region: '{{region}}'
     spec:
       project: default
-      source:
-        repoURL: https://github.com/stella07/guestbook.git
-        targetRevision: main
-        path: resources
+      sources:                                   # 👈 switched to plural
+        - repoURL: https://github.com/stella07/guestbook.git
+          targetRevision: main
+          chart: resources                       # 👈 Helm chart
+          helm:
+            releaseName: '{{name}}'
+            valueFiles:
+              - values.yaml
+              - values-{{environment}}.yaml
+        - repoURL: https://github.com/stella07/guestbook.git
+          targetRevision: main
+          path: configmap                        # 👈 plain YAML folder
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{namespace}}'
       syncPolicy:
         automated:
-          prune: true       # remove resources not in git
-          selfHeal: true    # auto-correct drift
+          prune: true        # remove resources not in git
+          selfHeal: true     # auto-correct drift
