@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/stella07/guestbook.git
         revision: main
         files:
-          - path: deployments/aws-build/**/config.yaml
+          - path: deployments/aws-$(ENV)/**/config.yaml
   template:
     metadata:
       name: '{{name}}'
