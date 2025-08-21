@@ -1,8 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: apic
-  namespace: default
+  name: apiconnect-application-set
+  namespace: argocd
 spec:
   generators:
     - git:
@@ -12,11 +12,11 @@ spec:
           - path: deployments/aws-build/**/config.yaml
   template:
     metadata:
-      name: apic-d-u01
+      name: '{{name}}'
       labels:
         cloud: aws
-        environment: development
-        region: us-east-1
+        environment: '{{environment}}'
+        region: '{{region}}'
     spec:
       project: default
       source:
@@ -25,6 +25,8 @@ spec:
         path: resources
       destination:
         server: https://kubernetes.default.svc
-        namespace: default
+        namespace: '{{namespace}}'
       syncPolicy:
-        automated: {}   # auto create/update resources
+        automated:
+          prune: true       # remove resources not in git
+          selfHeal: true    # auto-correct drift
