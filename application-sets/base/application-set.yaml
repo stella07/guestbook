@@ -9,14 +9,14 @@ spec:
         repoURL: https://github.com/stella07/guestbook.git
         revision: main
         files:
-          - path: deployments/aws-$(ENV)/**/config.yaml
+          - path: deployments/aws-build/**/config.yaml
   template:
     metadata:
-      name: '{{name}}'
+      name: apic-tt
       labels:
         cloud: aws
-        environment: '{{environment}}'
-        region: '{{region}}'
+        environment: dev
+        region: us-east
     spec:
       project: default
       source:
@@ -25,6 +25,6 @@ spec:
         path: resources
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{namespace}}'
+        namespace: default
       syncPolicy:
         automated: {}   # auto create/update resources
