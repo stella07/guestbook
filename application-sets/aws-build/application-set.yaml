@@ -30,7 +30,7 @@ spec:
               - values-{{environment}}.yaml
         - repoURL: https://github.com/stella07/guestbook.git
           targetRevision: main
-          path: configmap                        # 👈 plain YAML folder
+          path: configmap                     # 👈 plain YAML folder
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{namespace}}'
