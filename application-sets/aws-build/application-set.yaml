@@ -1,8 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: apiconnect-application-set
-  namespace: argocd
+  name: apic
+  namespace: default
 spec:
   generators:
     - git:
@@ -12,24 +12,19 @@ spec:
           - path: deployments/aws-build/**/config.yaml
   template:
     metadata:
-      name: '{{name}}'
+      name: apic-tt
       labels:
         cloud: aws
-        environment: '{{environment}}'
-        region: '{{region}}'
+        environment: dev
+        region: us-east
     spec:
       project: default
-      sources:                                   # 👈 switched to plural
-        - repoURL: https://github.com/stella07/guestbook.git
-          targetRevision: main
-          path: resources                       # 👈 Helm chart
-        - repoURL: https://github.com/stella07/guestbook.git
-          targetRevision: main
-          path: configmap                     # 👈 plain YAML folder
+      source:
+        repoURL: https://github.com/stella07/guestbook.git
+        targetRevision: main
+        path: resources
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{namespace}}'
+        namespace: default
       syncPolicy:
-        automated:
-          prune: true        # remove resources not in git
-          selfHeal: true     # auto-correct drift
+        automated: {}   # auto create/update resources
