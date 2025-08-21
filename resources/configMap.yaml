@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: guestbook-config
+data:
+  APP_NAME: "Guestbook"
+  APP_ENV: "production"
+  WELCOME_MESSAGE: "Welcome to ArgoCD Guestbook!"
