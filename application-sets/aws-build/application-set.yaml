@@ -22,12 +22,7 @@ spec:
       sources:                                   # 👈 switched to plural
         - repoURL: https://github.com/stella07/guestbook.git
           targetRevision: main
-          chart: resources                       # 👈 Helm chart
-          helm:
-            releaseName: '{{name}}'
-            valueFiles:
-              - values.yaml
-              - values-{{environment}}.yaml
+          path: resources                       # 👈 Helm chart
         - repoURL: https://github.com/stella07/guestbook.git
           targetRevision: main
           path: configmap                     # 👈 plain YAML folder
