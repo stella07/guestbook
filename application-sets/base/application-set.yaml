@@ -1,8 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: apiconnect-application-set
-  namespace: argocd
+  name: apic
+  namespace: default
 spec:
   generators:
     - git:
